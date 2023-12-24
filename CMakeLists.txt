@@ -10,4 +10,8 @@ set(EXT_LIB MyString/src/charlist.h MyString/src/mystring.h MyString/src/mystrin
 
 add_library(mystring STATIC ${EXT_LIB})
 
+find_package(Curses REQUIRED)
+include_directories(${CURSES_INCLUDE_DIR})
+
 add_executable(main src/main.cpp)
+target_link_libraries(main ${CURSES_LIBRARIES} mystring)
