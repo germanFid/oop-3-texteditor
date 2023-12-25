@@ -11,7 +11,21 @@ void run_editor(const char* file_name) {
 }
 
 int main(int argc, char** argv) {
-	if (argc > 0) {
+	if (argc == 2) {
 		run_editor(argv[1]);
 	}
+
+	else
+	{
+		FILE* f;
+		f = fopen(".tmptext", "w");
+		
+		if (f != NULL)
+		{
+			fclose(f);
+			run_editor(".tmptext");
+		}
+	}
+
+	return 0;
 }
